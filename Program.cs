@@ -34,11 +34,15 @@ namespace StoreProcedureGetData
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                // ------------------------------------------------
                 // Add the ID parameter to the SqlCommand
                 cmd.Parameters.Add(new SqlParameter("@ID", ID));
+                // ------------------------------------------------
 
                 con.Open();
+
                 SqlDataReader dr = cmd.ExecuteReader();
+
                 while (dr.Read())
                 {
                     Console.WriteLine("ID =>" + dr["id"] + " Name =>" + dr["name"] + " Address =>" + dr["address"] + " Capname =>" + dr["capname"]);
